@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">library</string>
+    <string name="no_network">当前无网络连接</string>
+    <string name="bye_burger_bottom_behavior">com.rays.library.behavior.byeburgernavigationview.ByeBurgerBottomBehavior</string>
+    <string name="bye_burger_title_behavior">com.rays.library.behavior.byeburgernavigationview.ByeBurgerTitleBehavior</string>
+    <string name="no_permisstion_write">没有写入磁盘权限</string>
+    <string name="network_request_timeout">网络请求超出时限，请检查网络设置</string>
+</resources>

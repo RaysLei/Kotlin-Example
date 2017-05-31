@@ -8,7 +8,11 @@ buildscript {
 
             'supportLibrary': '25.3.1',
             'kotlin'        : '1.1.2-3',
-            'anko'          : '0.10.0'
+            'anko'          : '0.10.0',
+            'retrofit'      : '2.3.0',
+            'okhttp'        : '3.8.0',
+            'rxjava'        : '2.1.0',
+            'rxandroid'     : '2.0.1'
     ]
 
 
