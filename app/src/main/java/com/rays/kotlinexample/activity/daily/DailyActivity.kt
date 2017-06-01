@@ -27,6 +27,7 @@ import org.jetbrains.anko.toast
 class DailyActivity : BaseActivity() {
 
     lateinit var progressDialog: ProgressDialog
+    lateinit var adapter: DailyAdapter
 
     companion object {
         const val EXTRA_TITLE = "title"
@@ -74,6 +75,8 @@ class DailyActivity : BaseActivity() {
         iv_image.setOnClickListener { toast("Image") }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = DailyAdapter(null)
+        recyclerView.adapter = adapter
 
         progressDialog = ProgressDialog(this)
 
@@ -141,7 +144,7 @@ class DailyActivity : BaseActivity() {
                                 list.addAll(it)
                             }
                         }
-                        recyclerView.adapter = DailyAdapter(list)
+                        adapter.setNewData(list)
                     }
                 }, {
                     it.printStackTrace()

@@ -6,6 +6,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.rays.kotlinexample.R
+import com.rays.kotlinexample.activity.WebViewActivity
 import com.rays.kotlinexample.entity.DailyItemType
 import com.rays.kotlinexample.entity.DailyTitle
 import com.rays.kotlinexample.entity.GanHuoData
@@ -15,7 +16,7 @@ import com.rays.kotlinexample.util.SpannableStringUtils
 /**
  * Created by Rays on 2017/5/31.
  */
-class DailyAdapter(data: List<MultiItemEntity>) : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>(data) {
+class DailyAdapter(data: List<MultiItemEntity>?) : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>(data) {
 
     init {
         addItemType(DailyItemType.TITLE.ordinal, R.layout.item_daily_item_title)
@@ -39,10 +40,10 @@ class DailyAdapter(data: List<MultiItemEntity>) : BaseMultiItemQuickAdapter<Mult
                     holder.getView<TextView>(R.id.tv_title).text = subSequence(0, builder.length)
                 }
                 holder.itemView.setOnClickListener {
-//                    WebViewActivity.start(holder.itemView.getContext(), recently.getDesc(), recently.getUrl());
+                    WebViewActivity.start(holder.itemView.context, item.desc ?: "", item.url ?: "")
                 }
                 holder.itemView.setOnLongClickListener {
-//                    DialogUtils.showActionDialog(v.getContext(), v
+                    //                    DialogUtils.showActionDialog(v.getContext(), v
 //                            , new CollectTable(recently.getDesc(), recently.getUrl(), recently.getType()));
                     true
                 }
