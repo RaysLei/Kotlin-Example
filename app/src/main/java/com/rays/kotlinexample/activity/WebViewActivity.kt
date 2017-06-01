@@ -8,7 +8,6 @@ import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.view.menu.MenuBuilder
-import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -16,7 +15,6 @@ import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.TextView
 import com.rays.kotlinexample.R
 import com.rays.kotlinexample.util.ClipboardUtils
 import com.rays.kotlinexample.util.SystemShareUtils
@@ -27,7 +25,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 /**
  * Created by Rays on 2017/5/31.
  */
-class WebViewActivity : BaseActivity() {
+class WebViewActivity : ToolbarActivity() {
 
     companion object {
         const val EXTRA_TITLE = "title"
@@ -43,43 +41,14 @@ class WebViewActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         super.setContentView(R.layout.activity_web_view)
-        initToolbar()
         initWebView()
         initData()
-    }
-
-    fun initToolbar() {
-        setSupportActionBar(toolbar)
-        supportActionBar?.let {
-            it.setHomeButtonEnabled(true)//决定左上角的图标是否可以点击
-            it.setDisplayHomeAsUpEnabled(true)//决定左上角图标的右侧是否有向左的小箭头
-            it.setDisplayShowTitleEnabled(false)
-        }
-        toolbar.setNavigationOnClickListener { finish() }
-
-        with(textSwitcher) {
-            setFactory {
-                val textView = TextView(this@WebViewActivity)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    textView.setTextAppearance(R.style.WebTitle)
-                } else {
-                    textView.setTextAppearance(this@WebViewActivity, R.style.WebTitle)
-                }
-                textView.setSingleLine(true)
-                textView.ellipsize = TextUtils.TruncateAt.MARQUEE
-                textView.setOnClickListener { v -> v.isSelected = !v.isSelected }
-                textView
-            }
-            setInAnimation(this@WebViewActivity, android.R.anim.fade_in)
-            setOutAnimation(this@WebViewActivity, android.R.anim.fade_out)
-            setText(getExtraTitle())
-            isSelected = true
-        }
     }
 
     fun initWebView() {
         WebViewUtil.setWebViewOptions(webView)
         webView.setWebViewClient(object : WebViewClient() {
+            @Suppress("OverridingDeprecatedMember")
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
                 view.loadUrl(url)
                 return true
@@ -120,6 +89,8 @@ class WebViewActivity : BaseActivity() {
         webView.loadUrl(getExtraUrl())
     }
 
+    override fun getToolbarTitle() = getExtraTitle()
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_webview_toolbar, menu)
         return true
@@ -146,9 +117,9 @@ class WebViewActivity : BaseActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun getExtraUrl() = intent.getStringExtra(EXTRA_URL)
+    private fun getExtraUrl() = intent.getStringExtra(EXTRA_URL) ?: ""
 
-    private fun getExtraTitle() = intent.getStringExtra(EXTRA_TITLE)
+    private fun getExtraTitle() = intent.getStringExtra(EXTRA_TITLE) ?: ""
 
     override fun onBackPressed() {
         if (webView.canGoBack()) {

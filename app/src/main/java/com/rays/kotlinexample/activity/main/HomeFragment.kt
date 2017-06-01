@@ -48,11 +48,6 @@ class HomeFragment : BaseFragment() {
             adapter.setEnableLoadMore(false)
             loadData(pageUtil.firstPage)
         }
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
-
-            }
-        })
     }
 
     private fun initData() {

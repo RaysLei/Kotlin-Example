@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.rays.kotlinexample.R
+import com.rays.kotlinexample.activity.girl.GirlActivity
 import com.rays.kotlinexample.constant.Category
 import com.rays.kotlinexample.entity.CategoryEntity
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
@@ -27,6 +28,7 @@ class CategoryAdapter : BaseQuickAdapter<CategoryEntity, BaseViewHolder>(R.layou
                 .into(ivImg)
 
         holder.itemView.setOnClickListener {
+            GirlActivity.start(it.context, "看妹纸")
             if (item.name == "福利") {
 //                SubActivity.start(v.getContext(), "看妹纸", SubActivity.TYPE_MEIZHI)
             } else {

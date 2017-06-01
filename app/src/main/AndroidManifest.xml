@@ -37,11 +37,10 @@
             </intent-filter>-->
         </activity>
         <activity android:name=".activity.WebViewActivity">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+        </activity>
+        <activity android:name=".activity.girl.GirlActivity">
+        </activity>
+        <activity android:name=".activity.viewimg.ViewImgActivity">
         </activity>
     </application>
 
