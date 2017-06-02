@@ -22,4 +22,14 @@ public class RxUtils {
             }
         };
     }
+
+    public static <T> ObservableTransformer<T, T> allIoSchedulers() {
+        return new ObservableTransformer<T, T>() {
+            @Override
+            public ObservableSource<T> apply(Observable<T> upstream) {
+                return upstream.observeOn(Schedulers.io())
+                        .subscribeOn(Schedulers.io());
+            }
+        };
+    }
 }

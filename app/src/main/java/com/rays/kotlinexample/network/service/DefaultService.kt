@@ -5,8 +5,11 @@ import com.rays.kotlinexample.entity.DailyList
 import com.rays.kotlinexample.entity.GanHuoData
 import com.rays.kotlinexample.entity.HttpResult
 import io.reactivex.Observable
+import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Streaming
+import retrofit2.http.Url
 
 /**
  * Created by Rays on 2017/5/27.
@@ -30,4 +33,8 @@ interface DefaultService {
      */
     @GET("data/{category}/20/{pageIndex}")
     fun getGanHuo(@Path("category") category: String, @Path("pageIndex") pageIndex: Int): Observable<HttpResult<List<GanHuoData>>>
+
+    @GET
+    @Streaming
+    fun download(@Url url: String): Observable<ResponseBody>
 }
