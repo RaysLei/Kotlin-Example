@@ -31,6 +31,7 @@ class ViewImgActivity : BaseActivity() {
         val EXTRA_URLS = "urls"
         val EXTRA_INDEX = "index"
         fun start(context: Context, v: View, index: Int? = 0, vararg urls: String) {
+            urls.forEach { println(it) }
             val intent = Intent(context, ViewImgActivity::class.java)
             intent.putExtra(EXTRA_URLS, urls)
             intent.putExtra(EXTRA_INDEX, index)

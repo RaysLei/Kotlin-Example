@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.text.TextPaint
 import android.view.View
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.rays.kotlinexample.R
 import com.rays.kotlinexample.activity.BaseActivity
@@ -71,6 +72,7 @@ class DailyActivity : BaseActivity() {
                 .load(intent.getStringExtra(EXTRA_IMAGE_URL))
                 .placeholder(R.color.md_grey_300)
                 .error(R.color.md_red_300)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(iv_image)
         iv_image.setOnClickListener { toast("Image") }
 

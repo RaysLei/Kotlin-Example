@@ -1,6 +1,7 @@
 package com.rays.kotlinexample.activity.girl
 
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.rays.kotlinexample.R
@@ -17,6 +18,7 @@ class GirlListAdapter : BaseQuickAdapter<GanHuoData, BaseViewHolder>(R.layout.it
                 .load(item.url)
                 .placeholder(R.color.md_grey_300)
                 .error(R.color.md_red_300)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(holder.getView(R.id.iv_img))
         holder.itemView.setOnClickListener {
             ViewImgActivity.start(it.context, it, 0, item.url ?: "")

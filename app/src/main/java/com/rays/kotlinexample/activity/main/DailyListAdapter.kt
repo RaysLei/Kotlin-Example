@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.rays.kotlinexample.R
@@ -27,6 +28,7 @@ class DailyListAdapter : BaseQuickAdapter<Daily, BaseViewHolder>(R.layout.item_d
                 .load(item.imgUrl)
                 .placeholder(R.color.md_grey_300)
                 .error(R.color.md_red_300)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(ivImg)
         ivImg.setColorFilter(Color.parseColor("#5e000000"))
 

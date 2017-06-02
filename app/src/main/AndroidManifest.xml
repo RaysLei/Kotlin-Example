@@ -42,6 +42,8 @@
         </activity>
         <activity android:name=".activity.viewimg.ViewImgActivity">
         </activity>
+        <activity android:name=".activity.category.CategoryListActivity">
+        </activity>
     </application>
 
 </manifest>
